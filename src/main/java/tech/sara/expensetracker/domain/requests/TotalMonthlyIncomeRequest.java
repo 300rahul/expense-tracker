@@ -8,6 +8,5 @@ import javax.validation.constraints.Pattern;
 @Component
 @Data
 public class TotalMonthlyIncomeRequest {
-    Integer userId;
     Double amount;
 }

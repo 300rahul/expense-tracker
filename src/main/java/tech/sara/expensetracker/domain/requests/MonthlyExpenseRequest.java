@@ -4,14 +4,14 @@ import lombok.Data;
 import org.springframework.stereotype.Component;
 import tech.sara.expensetracker.domain.enums.ExpenseCategory;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Component
 @Data
-public class AddMonthlyExpenseRequest {
-    Integer userId;
+public class MonthlyExpenseRequest {
     Double amount;
-    ExpenseCategory expenseCategory;
+    String expenseCategory;
     Date startDate;
     Date endDate;
 }

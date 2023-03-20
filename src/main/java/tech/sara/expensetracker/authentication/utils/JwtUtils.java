@@ -35,18 +35,24 @@ public class JwtUtils {
         return extractExpiration(token).before(new Date());
     }
 
+    //create jwt access token with HS@%^ algo and 1 hour expiry
     public String generateToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
-        return createToken(claims, userDetails.getUsername());
+        return createToken(claims, userDetails.getUsername(), (long) (1000 * 60 * 60 * 1));
     }
 
-    //create jwt token with HS@%^ algo and 10 hour expiry
-    private String createToken(Map<String, Object> claims, String subject) {
+    private String createToken(Map<String, Object> claims, String subject, Long expiry) {
 
         return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10))
+                .setExpiration(new Date(System.currentTimeMillis() + expiry))
                 .signWith(SignatureAlgorithm.HS256, SECRET_KEY).compact();
     }
+
+    //create jwt refresh token with HS@%^ algo and 10 hour expiry
+//    public String generateRefreshToken(UserDetails userDetails) {
+//        Map<String, Object> claims = new HashMap<>();
+//        return createToken(claims, userDetails.getUsername(), (long) (1000 * 60 * 60 * 1));
+//    }
 
     public Boolean validateToken(String token, UserDetails userDetails) {
         final String username = extractUsername(token);

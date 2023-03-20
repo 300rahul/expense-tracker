@@ -3,11 +3,9 @@ package tech.sara.expensetracker.jpa.entities;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name = "user_detail")
@@ -15,6 +13,7 @@ import java.time.LocalDateTime;
 public class User {
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
     @Column(name = "first_name")
@@ -34,9 +33,9 @@ public class User {
 
     @Column(name = "created_time")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    LocalDateTime createdTime;
+    Date createdTime;
 
     @Column(name = "updated_time")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    LocalDateTime updatedTime;
+    Date updatedTime;
 }

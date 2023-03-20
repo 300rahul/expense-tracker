@@ -4,12 +4,9 @@ import lombok.Data;
 import org.springframework.stereotype.Component;
 import tech.sara.expensetracker.domain.enums.ExpenseCategory;
 
-import javax.validation.constraints.Pattern;
-
 @Component
 @Data
-public class AddDailyExpenseWithCategoryRequest {
-    Integer userId;
+public class AddDailyExpenseRequest {
     Double amount;
-    ExpenseCategory category;
+    String category;
 }

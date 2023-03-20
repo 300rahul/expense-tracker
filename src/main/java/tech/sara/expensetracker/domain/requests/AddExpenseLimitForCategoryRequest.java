@@ -12,8 +12,7 @@ import java.util.Date;
 @Component
 @Data
 public class AddExpenseLimitForCategoryRequest {
-    Integer userId;
-    ExpenseType expenseType;
-    ExpenseCategory expenseCategory;
+    String expenseType;
+    String expenseCategory;
     Double amount;
 }
